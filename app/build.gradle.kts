@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.smsforwarder"
-        minSdk = 36
+        minSdk = 26  // S25용으로 조정
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -27,20 +27,27 @@ android {
             )
         }
     }
+
+    // JVM 호환성 문제 해결
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"  // Java와 동일하게 맞춤
     }
+
     buildFeatures {
         compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.8"
     }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
